@@ -41,7 +41,7 @@ If you want to pre-install Homebrew packages in your image:
 
 ```dockerfile
 # Copy Homebrew files
-COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
+COPY --from=ghcr.io/projectbluefin/brew:latest /system_files /
 
 # Install Homebrew packages during image build
 RUN mkdir -p /var/home/linuxbrew && \
