@@ -1,0 +1,6 @@
+version: "1"
+rules:
+  - base: master
+    upstream: projectbluefin:master
+    mergeMethod: merge
+    mergeUnstable: false
