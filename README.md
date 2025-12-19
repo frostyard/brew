@@ -35,26 +35,6 @@ On first boot, `brew-setup.service` will automatically:
 2. Set up proper permissions
 3. Make Homebrew ready to use
 
-### Advanced Example with Pre-installed Packages
-
-If you want to pre-install Homebrew packages in your image:
-
-```dockerfile
-# Copy Homebrew files
-COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
-
-# Install Homebrew packages during image build
-RUN mkdir -p /var/home/linuxbrew && \
-    tar --zstd -xvf /usr/share/homebrew.tar.zst -C /tmp && \
-    mv /tmp/home/linuxbrew/.linuxbrew /var/home/linuxbrew/ && \
-    eval "$(/var/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && \
-    brew install gcc neovim ripgrep && \
-    brew cleanup && \
-    tar --zstd -cvf /usr/share/homebrew.tar.zst /var/home/linuxbrew/.linuxbrew && \
-    rm -rf /var/home/linuxbrew/.linuxbrew /tmp/home
-```
-
-
 ## Systemd Services
 
 ### `brew-setup.service`
